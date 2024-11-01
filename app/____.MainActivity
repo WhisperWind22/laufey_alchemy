@@ -1,0 +1,78 @@
+package com.example.alchemy
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.compose.setContent
+import androidx.compose.runtime.Composable
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.example.alchemy.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.room.Room
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+
+import androidx.compose.ui.tooling.preview.Preview
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var alchemyRepository: AlchemyRepository
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val navView: BottomNavigationView = binding.navView
+
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val db = Room.databaseBuilder(
+//                applicationContext,
+//                AppDatabase::class.java, "alchemy-database"
+//            ).build()
+//
+//            alchemyRepository = AlchemyRepository(db.ingredientDao())
+//
+//            withContext(Dispatchers.Main) {
+//                setContent {
+//                    AlchemyScreen(alchemyRepository)
+//                }
+//            }
+//        }
+    }
+}
+
+
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewMainScreen() {
+    val dummyRepository = AlchemyRepository(object : IngredientDao {
+        override fun getIngredientsByEffect(effect: String): List<Ingredient> {
+            return listOf(
+                Ingredient(1, "Ingredient 1", 1, effect, "", "", "", "", ""),
+                Ingredient(2, "Ingredient 2", 2, effect, "", "", "", "", "")
+            )
+        }
+
+        override fun insertAll(vararg ingredients: Ingredient) {
+            // No-op
+        }
+    })
+    AlchemyScreen(alchemyRepository = dummyRepository)
+}

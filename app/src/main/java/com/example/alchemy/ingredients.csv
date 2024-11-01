@@ -1,0 +1,6 @@
+id,name,primaryEffect,secondaryEffect,tertiaryEffect,quaternaryEffect,description,imageUrl
+1,Ingredient1,Effect1,Effect2,Effect3,Effect4,Description1,http://example.com/image1.jpg
+2,Ingredient2,Effect5,Effect6,Effect7,Effect8,Description2,http://example.com/image2.jpg
+3,Ingredient3,Effect9,Effect10,Effect11,Effect12,Description3,http://example.com/image3.jpg
+4,Ingredient4,Effect13,Effect14,Effect15,Effect16,Description4,http://example.com/image4.jpg
+5,Ingredient5,Effect17,Effect18,Effect19,Effect20,Description5,http://example.com/image5.jpg
