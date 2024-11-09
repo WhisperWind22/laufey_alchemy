@@ -8,10 +8,10 @@ import androidx.room.PrimaryKey
 data class Ingredient(
     @PrimaryKey val id: Int,
     val name: String,
-    val primaryEffect: String,
-    val secondaryEffect: String,
-    val tertiaryEffect: String,
-    val quaternaryEffect: String,
+    val positiveEffects: List<String>,
+    val negativeEffects: List<String>,
+    val imageUrl: String,
     val description: String,
-    val imageUrl: String
+    val value: String,
+    val weight: String
 )

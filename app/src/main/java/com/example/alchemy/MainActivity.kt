@@ -21,6 +21,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
+import androidx.compose.material.Divider
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -186,21 +188,42 @@ fun IngredientListScreen(
                     context.packageName
                 )
                 if (resourceId != 0) {
-                    Row(
+                    Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(8.dp),
-                        verticalAlignment = Alignment.CenterVertically
+                            .padding(8.dp)
                     ) {
-                        Image(
-                            painter = painterResource(id = resourceId),
-                            contentDescription = ingredient.name,
-                            modifier = Modifier.size(50.dp)
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Image(
+                                painter = painterResource(id = resourceId),
+                                contentDescription = ingredient.name,
+                                modifier = Modifier.size(50.dp)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(text = ingredient.name, style = MaterialTheme.typography.h6)
+                        }
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = "Положительные эффекты:",
+                            style = MaterialTheme.typography.subtitle1,
+                            color = Color.Green
                         )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(text = ingredient.name)
+                        ingredient.positiveEffects.forEach { effect ->
+                            Text("• $effect")
+                        }
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = "Отрицательные эффекты:",
+                            style = MaterialTheme.typography.subtitle1,
+                            color = Color.Red
+                        )
+                        ingredient.negativeEffects.forEach { effect ->
+                            Text("• $effect")
+                        }
+                        Divider(modifier = Modifier.padding(vertical = 8.dp))
                     }
-                    Spacer(modifier = Modifier.height(8.dp))
                 } else {
                     Log.e("IngredientListScreen", "Resource not found for ${ingredient.imageUrl}")
                 }
