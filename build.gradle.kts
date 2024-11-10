@@ -9,8 +9,9 @@ buildscript {
         mavenCentral() // Добавьте Maven Central репозиторий
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:8.7.2") // Убедитесь, что версия правильная
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.21")
+        classpath(libs.gradle) // Убедитесь, что версия правильная
+        classpath(libs.kotlin.gradle.plugin)
+        classpath(libs.gson)
     }
 }
 
