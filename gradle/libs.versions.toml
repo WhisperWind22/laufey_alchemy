@@ -25,6 +25,7 @@ navigationFragmentKtx = "2.8.3"
 navigationFragmentKtxVersion = "2.8.3"
 navigationUiKtx = "2.8.3"
 navigationUiKtxVersion = "2.8.3"
+roomCompiler = "2.6.1"
 roomRuntime = "2.6.1"
 uiViewbinding = "1.7.5"
 runtimeLivedata = "1.7.5"
@@ -46,6 +47,7 @@ androidx-material = { module = "androidx.compose.material:material", version.ref
 androidx-navigation-fragment-ktx-v260 = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtxVersion" }
 androidx-navigation-ui-ktx-v260 = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtxVersion" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-compiler-v250 = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 androidx-ui = { module = "androidx.compose.ui:ui", version.ref = "uiViewbinding" }
